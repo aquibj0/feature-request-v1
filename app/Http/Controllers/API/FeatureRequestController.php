@@ -44,4 +44,17 @@ class FeatureRequestController extends Controller
 
         
     }
+
+
+    public function updateStatus(Request $request, FeatureRequest $featureRequest){
+        
+        $validatedData = $request->validate([
+            'status' => 'required|in:pending,in progress,completed', // Define the allowed statuses
+        ]);
+
+        $featureRequest->update(['status' => $validatedData['status']]);
+
+        return response()->json(['message' => 'Feature request status updated']);
+    }
+
 }

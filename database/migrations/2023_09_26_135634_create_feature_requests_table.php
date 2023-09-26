@@ -21,8 +21,9 @@ return new class extends Migration
             $table->string('user_email');
             $table->string('feature_request_title');
             $table->string('feature_request_description');
-            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
 
+            $table->enum('status', ['pending', 'approved', 'in-progress', 'rejected'])->default('pending');
+            
             $table->timestamps();
             $table->softDeletes();
         });
