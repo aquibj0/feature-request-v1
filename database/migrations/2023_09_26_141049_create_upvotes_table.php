@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_apps', function (Blueprint $table) {
+        Schema::create('upvotes', function (Blueprint $table) {
             $table->id();
-            $table->uuid('app_id');
-            $table->unsignedBigInteger('user_id'); 
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->string('app_name');
-            $table->string('app_api_key', 64)->unique();
+
+            $table->unsignedBigInteger('user_id')->nullable();
+
+            $table->unsignedBigInteger('feature_request_id'); 
+            $table->foreign('feature_request_id')->references('id')->on('feature_requests');
+
             $table->timestamps();
-            $table->softDeletes();
-            
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_apps');
+        Schema::dropIfExists('upvotes');
     }
 };
