@@ -18,9 +18,16 @@ class UserApp extends Model
         'app_id',
         'user_id',
         'app_name',
+        'app_description',
         'app_api_key'
     ];
 
-    
+
+    // Mutator to hash the API key before saving it
+    public function setApiKeyAttribute($value)
+    {
+        $this->attributes['app_api_key'] = bcrypt($value);
+    }
+
 
 }
