@@ -1,0 +1,60 @@
+.session-status {
+    border: 2px solid;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    background: white;
+    box-shadow: 0 7px 21px rgba(0, 0, 0, 0.02);
+}
+
+
+
+.side-nav {
+
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+
+    .nav {
+        &-item {
+            .active {
+                color: $white !important;
+
+                &:hover {
+                    background: lightgray !important;
+                    color: $white !important;
+                }
+            }
+        }
+
+        &-link {
+            padding: 0.65rem 1rem;
+
+            &:hover {
+                background: lightgray !important;
+            }
+        }
+    }
+
+}
+
+.fw-400{font-weight: 400;}
+.fw-500{font-weight: 500;}
+.fw-600{font-weight: 600;}
+.fw-700{font-weight: 700;}
+.fw-800{font-weight: 800;}
+.fw-900{font-weight: 900;}
+
+.bg-white{
+    background-color: $white !important;
+}
+
+table{
+    th,td{
+        vertical-align: middle;
+        background-color: $white !important;
+    }
+}

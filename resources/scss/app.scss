@@ -1,0 +1,25 @@
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;
+
+// Fonts
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+// Variables
+@import 'variables';
+// @import 'abstracts/variables';
+// @import 'abstracts/mixin';
+@import 'global';
+
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+// Components
+// @import 'components/sidebar';
+// @import 'components/navbar';
+// @import 'components/loader';
+
+// Pages
+// @import 'pages/dashboard';
+// @import 'pages/main';

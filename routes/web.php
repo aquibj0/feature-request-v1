@@ -36,6 +36,8 @@ Route::middleware(['auth'])->group(function () {
 
 
 
+    Route::get('/get-{status}-feature-request', [DashboardController::class, 'getFeatureRequestStatus'])->name('feature-request.status');
+
 
 });
 

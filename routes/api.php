@@ -20,11 +20,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-// Route::middleware('auth')->group(function () {
+Route::middleware('api-auth')->group(function () {
 
     // Endpoint to store a new feature request
     Route::post('/{id}/feature-request/store', [FeatureRequestController::class, 'store'])->name('feature-request.store');
     Route::put('/feature-request/{feature-request-id}', [FeatureRequestController::class, 'updateStatus']);
     
 
-// });
+});
