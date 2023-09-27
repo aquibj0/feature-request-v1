@@ -37,7 +37,14 @@ class FeatureRequestController extends Controller
                 'status' => 'pending'
             ]);
 
-            return response()->json($featureRequest, 201);
+
+            $data = [
+                'message' => 'success',
+                'data' => $featureRequest,
+            ];
+
+            return response()->json($data, 201);
+
         }
 
         abort(404);
