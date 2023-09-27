@@ -8,6 +8,7 @@ use Auth;
 use App\Models\User;
 use App\Models\UserApp;
 use App\Models\FeatureRequest;
+use App\Models\Comments;
 use Str;
 
 class FeatureRequestController extends Controller
@@ -60,6 +61,17 @@ class FeatureRequestController extends Controller
         ]);
 
         $featureRequest->update(['status' => $validatedData['status']]);
+
+        if($request['comments']){
+
+            Comments::create([
+                'user_id' => auth()->user()->id,
+                'feature_request_id' => $featureRequest['id'],
+                'comment' => $request['comment'],
+            ]);
+
+        }
+
 
         return response()->json(['message' => 'Feature request status updated']);
     }
