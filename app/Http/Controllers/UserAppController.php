@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+
 use Auth;
 use App\Models\User;
 use App\Models\UserApp;
@@ -34,7 +36,6 @@ class UserAppController extends Controller
         $user = Auth::user()->first();
 
         $validatedData = $request->validate([
-            'user_id' => 'required',
             'name' => 'required|string',
             'description' => 'nullable|string',
         ]);
@@ -57,6 +58,51 @@ class UserAppController extends Controller
             
 
     }
+
+
+    public function storeData(Request $request){
+
+
+        $user = Auth::user()->first();
+
+        $app = UserApp::where('user_id', $user['id'])->first();
+
+
+        // $apiKey = 'Zvc8MVbPf6oKrY82ZyXkiFM0lGqLEKo0G6ddlEjPzr4bcIx2cPqNpigi6reKxl1A';
+        $apiKey = $app['app_api_key'];
+
+
+        $response = Http::withHeaders([
+            'X-Api-Key' => $apiKey,
+        ])->post('http://127.0.0.1:8000/api/5784eba9-5fbf-44e8-aa15-5cdd1d46ab97/feature-request/store', [
+            'app_id' => $app['id'],
+            'feature_request_id' => Str::uuid(),
+            'user_name' => $request['name'],
+            'user_email' => $request['email'],
+            'feature_request_title' => $request['title'],
+            'feature_request_description' => $request['description'],
+            'status' => 'pending'
+        ]);
+
+
+        return 123;
+
+            // Check the response for success or failure
+        if ($response->successful()) {
+            // Request was successful (status code 200-299)
+            $responseData = $response->json(); // Get the JSON response data
+            // Handle the response data as needed
+
+            return response()->json($responseData);
+        } else {
+            // Request failed (status code 400-599)
+            return response()->json(['error' => 'Request failed'], $response->status());
+        }
+
+        return response()->json($featureRequest, 201);
+
+}
+
 
     /**
      * Display the specified resource.

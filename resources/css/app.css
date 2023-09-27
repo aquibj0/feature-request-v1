@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.session-status{
+    border: 2px solid ;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    background: white;
+    box-shadow: 0 7px 21px rgba(0, 0, 0, 0.02);
+}

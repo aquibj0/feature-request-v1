@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserAppController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,23 +20,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'home'])->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware(['auth', 'api-auth'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-    Route::get('/{user-id}/user-app', [UserAppController::class, 'indez'])->name('app.index');
-    Route::post('/{user-id}/user-app/store', [UserAppController::class, 'store'])->name('app.store');
-    Route::delete('/{user-id}/user-app/{app-id}/destroy', [UserAppController::class, 'destroy'])->name('app.destroy');
+    Route::get('/user-app', [UserAppController::class, 'index'])->name('app.index');
+    Route::get('/user-app/store-date', [UserAppController::class, 'storeData'])->name('app.store-data');
+    Route::post('/user-app/store', [UserAppController::class, 'store'])->name('app.store');
+    Route::delete('/user-app/{app-id}/destroy', [UserAppController::class, 'destroy'])->name('app.destroy');
 
 
-    
+
 
 });
 

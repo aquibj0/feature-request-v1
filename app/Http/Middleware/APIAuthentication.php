@@ -19,7 +19,7 @@ class APIAuthentication
         $apiKey = $request->header('X-Api-Key'); // Assuming you send the API key in the X-Api-Key header
 
         if (!$apiKey) {
-            return response()->json(['message' => 'API key is missing'], 401);
+            return response()->json(['message' => 'API key is missing | Header not found'], 401);
         }
 
         $application = UserApp::where('app_api_key', $apiKey)->first();

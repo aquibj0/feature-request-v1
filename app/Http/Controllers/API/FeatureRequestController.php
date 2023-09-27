@@ -7,13 +7,14 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
 use App\Models\UserApp;
+use App\Models\FeatureRequest;
 use Str;
 
 class FeatureRequestController extends Controller
 {
-    public function store(Request $request, $key){
+    public function store(Request $request, $id){
 
-        $app = UserApp::where('app_api_key', $key)->first();
+        $app = UserApp::where('app_id', $id)->first();
 
         if(isset($app)){
 
@@ -35,7 +36,6 @@ class FeatureRequestController extends Controller
                 'feature_request_description' => $request['description'],
                 'status' => 'pending'
             ]);
-
 
             return response()->json($featureRequest, 201);
         }
