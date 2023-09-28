@@ -23,6 +23,8 @@
 
                 <div class="card overflow-hidden m-2 border-0 bg-white" >
                     <div class="card-body">
+
+                        {{$feature_request}}
                         <table class="table bg-white">
                             <thead>
                                 <tr >
@@ -35,28 +37,7 @@
                                     <th scope="col" class="py-2 text-center">Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-
-                                @isset($feature_requests)
-                                    
-                                    @foreach ($feature_requests as $data)
-                                        <tr c>
-                                            {{-- <td class="py-3">{{$data->app_id}}</td> --}}
-                                           
-                                            <td class="py-1">{{$data->feature_request_title}}</td>
-                                            {{-- <td class="py-3">{{$data->feature_request_description}}</td> --}}
-                                            <td class="py-1 text-center status">
-                                                <div class="px-2 py-1 text-center {{$data->status}}">
-                                                    {{$data->status}}
-                                                </div>
-                                            </td>
-                                            <td class="py-1 text-center">{{$data->user_email}}</td>
-                                            <td class="py-1 text-center">
-                                                <a href="{{route('feature-req.show', $data['id'])}}" class="btn btn-primary btn-sm px-3">View</a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @endisset
+                            <tbody>                                
                             </tbody>
                         </table>
                     </div>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserAppController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FeatureRequestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,8 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
     Route::post('/user-app/store', [UserAppController::class, 'store'])->name('app.store');
     Route::delete('/user-app/{app-id}/destroy', [UserAppController::class, 'destroy'])->name('app.destroy');
 
+    Route::get('/feature-request', [FeatureRequestController::class, 'getFeatureRequests'])->name('feature-req.index');
+    Route::get('/feature-request/{id}', [FeatureRequestController::class, 'show'])->name('feature-req.show');
 
 
     Route::get('/get-{status}-feature-request', [DashboardController::class, 'getFeatureRequestStatus'])->name('feature-request.status');

@@ -18,7 +18,7 @@ class FeatureRequestController extends Controller
 {
 
     // Apply the custom ApiKeyAuth middleware
-    
+
     public function __construct(){
         $this->middleware(APIAuthentication::class); 
     }
@@ -75,7 +75,6 @@ class FeatureRequestController extends Controller
                 'feature_request_description' => $request['description'],
                 'status' => 'pending'
             ]);
-
 
             $data = [
                 'message' => 'success',

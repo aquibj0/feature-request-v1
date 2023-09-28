@@ -8,10 +8,17 @@ use Illuminate\View\View;
 use Auth;
 use App\Models\User;
 use App\Models\UserApp;
+use App\Models\FeatureRequest;
 use Str;
 
 class UserAppController extends Controller
 {
+
+    // public function __construct()
+    // {
+    //     $this->middleware('api-auth', ['only' => ['getFeatureRequests']]); // Apply the built-in auth middleware
+    // }
+
     /**
      * Display a listing of the resource.
      */
@@ -33,10 +40,7 @@ class UserAppController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.

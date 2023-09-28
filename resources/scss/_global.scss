@@ -56,6 +56,17 @@ table{
     th,td{
         vertical-align: middle;
         background-color: $white !important;
+        font-size: .9rem;
+    }
+
+    .status{
+        .pending{background: rgba(orange, 0.2);}
+        .completed{background: rgba(green, 0.2);}
+        .rejected{background: rgba(red, 0.2);}
+        .in-progress{background: rgba(yellow, 0.2);;}
+        .approved{background: rgba(pink, 0.2);;}
+
+        div{width:fit-content; border-radius: .35rem;font-size: .9rem;}
     }
 }
 
