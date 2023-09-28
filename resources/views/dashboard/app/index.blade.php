@@ -21,7 +21,7 @@
 
 
             @if ($app)
-                <div class="col-md-12 mb-4">
+                <div class="col-md-12 mb-4">                    
                     
                     <div class="card shadow-sm border-0 p-1">
                         <div class="card-body py-4">
@@ -30,40 +30,17 @@
                                     <h4 class="fw-600">{{$app->app_name}}</h4>
                                     <p class="fs-6 fw-400 mb-0">{{$app->app_description}}</p>
                                 </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card shadow-sm border-0 p-1 my-4">
-                        <div class="card-body py-4">
-                            <div class="row align-items-center">
-                                <div class="col-md-9">
-                                    <h4 class="fw-600">API Key</h4>
-                                    <p class="fs-6 fw-400 mb-0">{{$app->app_api_key}}</p>
-                                </div>
                                 <div class="col-md-3 text-end">
-                                    {{-- <a href="" class="btn btn-primary  px-3"> View Details</a> --}}
-                                    <a href="" class="btn btn-warning  px-3"> Copy </a>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary px-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        Edit App
+                                    </button>
+
+                                    <a href="{{route('app.keys')}}" class="btn btn-warning  px-3"> Access Keys </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    {{-- <div class="card shadow-sm border-0 p-1">
-                        <div class="card-body py-4">
-                            <div class="row align-items-center">
-                                <div class="col-md-9">
-                                    <h4 class="fw-600">Form URL</h4>
-                                    <p class="fs-6 fw-400 mb-0">{{route('feature-request.store', $app->app_id)}}</p>
-                                </div>
-                                <div class="col-md-3 text-end">
-                                    <a href="" class="btn btn-warning  px-3"> Copy </a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div> --}}
 
                     <div class="card shadow-sm border-0 p-1 my-4">
                         <div class="card-body py-4">
@@ -155,4 +132,35 @@
         </div>
     </div>
 
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit App</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ">
+                    <form action="" method="POST" class="p-1" enctype="multipart/form-data">
+                        @method('PUT')
+                        @csrf
+                        <div class="mb-3">
+                            <label for="name" class="d-block mb-2">App Name</label>
+                            <input type="text" name="name" class="form-control form-control-lg" id="" value="{{$app->app_name}}">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="description" class="d-block mb-2">App Description</label>
+                            <textarea name="description" id="" cols="30" class="form-control form-control-lg" rows="5">{{$app->app_description}}</textarea>
+                        </div>
+                        
+                        <div class="mb-3 text-end">
+                            <x-primary-button type="submit" class="px-3">Update</x-primary-button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </x-dashboard-layout>

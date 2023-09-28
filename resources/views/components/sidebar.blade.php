@@ -20,23 +20,23 @@
             </a>
         </li>
         <li  class="nav-item mb-1">
-            <a href="{{route('feature-req.index')}}" class="nav-link text-gray-800 {{ (request()->is('dashboard/feature-request')) ? 'active' : '' }}">
+            <a href="{{route('feature-req.index')}}" class="nav-link text-gray-800 {{ (request()->is('dashboard/user-app/feature-request')) ? 'active' : '' }}">
                 <i class="bi bi-journal-plus"></i>
                 <span class="position-relative px-2 fw-500">Feature Requests</span>
             </a>
         </li>
         <li  class="nav-item mb-1">
-            <a href="{{route('app.keys')}}" class="nav-link text-gray-800 {{ (request()->is('dashboard/access-keys')) ? 'active' : '' }}">
+            <a href="{{route('app.keys')}}" class="nav-link text-gray-800 {{ (request()->is('dashboard/user-app/access-keys')) ? 'active' : '' }}">
                 <i class="bi bi-gear"></i>
                 <span class="position-relative px-2 fw-500">Access Keys</span>
             </a>
         </li>
-        {{-- <li  class="nav-item mb-2">
-            <a href="#" class="nav-link text-gray-800 {{ (request()->is('dashboard/bookmark')) ? 'active' : '' }}">
-                <img src="{{asset('images/dashboard/icons/Bookmark.png')}}" width="24" alt="">
-                <span class="position-relative px-2 fw-500">Bookmark</span>
+        <li  class="nav-item mb-2">
+            <a href="{{route('app.use')}}" class="nav-link text-gray-800 {{ (request()->is('dashboard/user-app/how-to-use')) ? 'active' : '' }}">
+                <i class="bi bi-hand-index"></i>
+                <span class="position-relative px-2 fw-500">Docs</span>
             </a>
-        </li> --}}
+        </li>
     </ul>
     
     <hr class="section-divider">

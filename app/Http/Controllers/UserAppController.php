@@ -49,9 +49,26 @@ class UserAppController extends Controller
                 'app' => $app,
             ]);
         }
+        
+        abort(404);
+
+    }
+
+    public function howToUse(): View {
+        $user = Auth::user()->first();
+
+        $app = UserApp::where('user_id', $user['id'])->first();
+
+        if(isset($app)){
+            return view('dashboard.app.how-to-use',[
+                'user' => $user,
+                'app' => $app,
+            ]);
+        }
         abort(404);
         
     }
+
 
     /**
      * Show the form for creating a new resource.
