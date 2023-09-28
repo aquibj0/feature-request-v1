@@ -83,10 +83,19 @@ table{
 }
 
 
-code {
-    color: crimson;
-    background-color: #f1f1f1;
-    // font-size: 105%;
+// code {
+//     color: crimson;
+//     background-color: #f1f1f1;
+//     // font-size: 105%;
+// }
+
+pre code {
+    background-color: #eee;
+    border: 1px solid #999;
+    display: block;
+    padding: 1rem;
+    color: crimson !important;
+    border-radius: .5rem;
 }
 
 
