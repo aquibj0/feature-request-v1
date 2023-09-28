@@ -139,7 +139,6 @@
                                 <div class="mb-4">
                                     <h5 class="fw-600">Example Code</h5>
                                     <p class="fs-6 fw-400 ">Here's an example of how to make a POST request using cURL:</p>
-
 <pre>
 <code>
 curl -X POST -H "Content-Type: application/json" -H "X-Api-Key: YOUR_API_KEY" -d '{
