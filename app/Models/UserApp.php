@@ -29,5 +29,9 @@ class UserApp extends Model
         $this->attributes['app_api_key'] = bcrypt($value);
     }
 
+    public function domain(){
+        return $this->hasOne('App\Models\CustomDomain','app_id');
+    }
+
 
 }

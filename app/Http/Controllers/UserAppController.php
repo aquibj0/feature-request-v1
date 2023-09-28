@@ -9,6 +9,7 @@ use Auth;
 use App\Models\User;
 use App\Models\UserApp;
 use App\Models\FeatureRequest;
+use App\Models\CustomDomain;
 use Str;
 
 class UserAppController extends Controller
@@ -154,9 +155,27 @@ class UserAppController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function saveCustomDomain(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'domain' => 'sometimes|string',
+            'enable_ssl' => 'sometimes',
+        ]);
+        
+        if($validatedData){
+            // Create a new application
+            $data = CustomDomain::create([
+                'app_id' => $request['app_id'],
+                'domain' => $request['domain'],
+                'is_ssl_enabled' => $request['is_ssl_enabled'],
+            ]);
+
+            return redirect()->back()->with('status', 'Domain added');
+
+        }
+        else{
+            // return $validatedData;
+        }
     }
 
     /**

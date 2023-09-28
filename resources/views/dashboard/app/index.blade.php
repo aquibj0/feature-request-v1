@@ -42,7 +42,7 @@
                         </div>
                     </div>
 
-                    <div class="card shadow-sm border-0 p-1 my-4">
+                    {{-- <div class="card shadow-sm border-0 p-1 my-4">
                         <div class="card-body py-4">
                             <div class="row align-items-center">
                                 <div class="col-md-9">
@@ -120,6 +120,37 @@
                                 </div>
                                 
                                 
+                            </div>
+                        </div>
+                    </div> --}}
+
+
+                    
+
+
+                </div>
+                <div class="setting">
+                    <h4 class="fw-600">Setting</h4>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card bg-white">
+                                <div class="card-body">
+                                    <form method="POST" action="{{ route('save.custom.domain') }}" enctype="multipart/form-data">
+                                        @csrf
+
+                                        <input type="text" name="app_id" value="{{$app->id}}">
+                                        <div class="mb-3">
+                                            <label for="domain" class="d-block mb-2">Custom Domain:</label>
+                                            <input type="text" id="domain" name="domain" class="form-control" required>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="is_ssl_enabled" class="mb-2">Enable SSL/TLS:</label>
+                                            <input type="checkbox" id="is_ssl_enabled" class="ms-2" name="is_ssl_enabled" checked value="1">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary px-4">Save</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>

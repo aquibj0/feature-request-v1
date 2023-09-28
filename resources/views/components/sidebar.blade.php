@@ -37,6 +37,14 @@
                 <span class="position-relative px-2 fw-500">Docs</span>
             </a>
         </li>
+
+        {{-- <li  class="nav-item mb-1">
+            <a href="{{route('app.keys')}}" class="nav-link text-gray-800 {{ (request()->is('dashboard/user-app/access-keys')) ? 'active' : '' }}">
+                <i class="bi bi-gear"></i>
+                <span class="position-relative px-2 fw-500">Access Keys</span>
+            </a>
+        </li> --}}
+        
     </ul>
     
     <hr class="section-divider">

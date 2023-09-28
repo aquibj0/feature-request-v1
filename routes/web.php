@@ -32,6 +32,7 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
 
     Route::get('/user-app', [UserAppController::class, 'index'])->name('app.index');
     Route::get('/user-app/store-date', [UserAppController::class, 'storeData'])->name('app.store-data');
+    Route::post('/user-app/save-custom-domain', [UserAppController::class, 'saveCustomDomain'])->name('save.custom.domain');
     Route::get('/user-app/access-keys', [UserAppController::class, 'accessKeys'])->name('app.keys');
     Route::get('/user-app/how-to-use', [UserAppController::class, 'howToUse'])->name('app.use');
     Route::post('/user-app/store', [UserAppController::class, 'store'])->name('app.store');
@@ -43,7 +44,6 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
     Route::put('/feature-request/{id}/update', [FeatureRequestController::class, 'updateStatus'])->name('feature-req.update');
 
     Route::post('/feature-request/{id}/comment/store', [FeatureRequestController::class, 'addComment'])->name('comment.store');
-
 
 });
 
