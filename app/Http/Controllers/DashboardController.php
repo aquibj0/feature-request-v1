@@ -34,20 +34,4 @@ class DashboardController extends Controller
 
     }
 
-
-    function getFeatureRequestStatus($status): View {
-        
-        $user = Auth::user()->first();
-
-        // Get the app
-        $app = UserApp::where('user_id', $user['id'])->first();  
-        
-        $feature_requests = FeatureRequest::where([['app_id', $app['id']], ['status', $status]])->orderBy('created_at', 'desc')->get();
-
-
-        // return $feature_requests;
-        return view('dashboard.feature-request.index',[
-            'feature_requests' => $feature_requests
-        ]);
-    }
 }

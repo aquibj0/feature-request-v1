@@ -19,27 +19,89 @@
     
         <div class="row px-0"> 
 
-            <div class="col-md-12">
+            <div class="col-md-9">
 
-                <div class="card overflow-hidden m-2 border-0 bg-white" >
+                <div class="card overflow-hidden mt-2 border p-1 mb-4" >
                     <div class="card-body">
 
-                        {{$feature_request}}
-                        <table class="table bg-white">
-                            <thead>
-                                <tr >
-                                    {{-- <th scope="col" class="py-3">id</th> --}}
-                                    
-                                    <th scope="col" class="py-2">Request Title</th>
-                                    {{-- <th scope="col" class="py-3">Request Description</th> --}}
-                                    <th scope="col" class="py-2">Status</th>
-                                    <th scope="col" class="py-3 text-center">Requested By</th>
-                                    <th scope="col" class="py-2 text-center">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>                                
-                            </tbody>
-                        </table>
+                        <h3 class="fw-600 text-gray-900">{{$feature_request->feature_request_title}}</h3>
+                        
+
+                        @php
+                            $date = Carbon\Carbon::parse($feature_request->created_at)->format('M d, Y')
+                        @endphp
+
+                        <p class="fw-600 pt-2">{{$date}}</p>
+
+                        <p class="fw-500" style="line-height: 1.5">{{$feature_request->feature_request_description}}</p>
+
+                        <hr>
+
+                        <h6>Requested By : <span class="fw-600">{{$feature_request->user_name}} ({{$feature_request->user_email}})</span></h6>
+
+                    </div>
+                </div>
+                <hr>
+                <div class="card bg-white my-4">
+                    <div class="card-body">
+
+                        <h3 class="fw-600 text-gray-900 mb-2">{{'Comments'}}</h3>
+
+                        <div class="my-4">
+                            <form action="{{route('comment.store', $feature_request->id)}}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <textarea name="comment" class="form-control" id="" cols="30" rows="5" placeholder="Add a comment here"></textarea>
+                                <div class="text-end mt-3">
+                                    <x-primary-button type="submit">Post Comment</x-primary-button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <hr>
+
+                        @foreach ($feature_request->comments as $data)
+                            <div class="card my-4">
+                                <div class="card-body">
+                                    <p class="mb-2">{{$data->comment}}</p>
+
+                                    @php
+                                        $date = Carbon\Carbon::parse($data->created_at)->format('M d, Y')
+                                    @endphp
+                                    <small class="mb-0 text-danger">{{$date}}</small>
+                                </div>
+                            </div>
+                        @endforeach
+                        
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="card my-2 bg-white shadow-sm border-0">
+                    <div class="card-body">
+                        <form action="{{route('feature-req.update', $feature_request['id'])}}" method="POST" enctype="multipart/form-data">
+                            
+                            @method('PUT')
+                            @csrf
+
+                            <label for="status" class="d-block my-2">Status</label>
+                            <select name="status" class="form-selec form-control text-black" id="">
+                                <option value="{{$feature_request->status}}" selected>{{$feature_request->status}}</option>
+                                <option value="completed">Complete</option>
+                                <option value="rejected">Reject</option>
+                                <option value="pending">Pending</option>
+                            </select>
+
+                            <label for="comment" class="d-block mt-3 mb-2">Comment(if any)</label>
+                            <textarea name="comment" id="" class="form-control" cols="30" rows="5"></textarea>
+
+                            <div class="my-3">
+                                <x-primary-button type="submit" class="w-100">Submit</x-primary-button>
+                            </div>
+                        </form>
                     </div>
                 </div>
 

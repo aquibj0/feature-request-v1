@@ -31,7 +31,7 @@ class FeatureRequest extends Model
     }
 
     public function comments(){
-        return $this->hasMany(Comments::class, 'feature_request_id');
+        return $this->hasMany(Comments::class, 'feature_request_id')->orderBy('created_at', 'desc');
     }
 
 }

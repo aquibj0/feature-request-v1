@@ -36,10 +36,11 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
     Route::delete('/user-app/{app-id}/destroy', [UserAppController::class, 'destroy'])->name('app.destroy');
 
     Route::get('/feature-request', [FeatureRequestController::class, 'getFeatureRequests'])->name('feature-req.index');
+    Route::get('/feature-request/status/{status}', [FeatureRequestController::class, 'getFeatureRequestStatus'])->name('feature-request.status');
     Route::get('/feature-request/{id}', [FeatureRequestController::class, 'show'])->name('feature-req.show');
+    Route::put('/feature-request/{id}/update', [FeatureRequestController::class, 'updateStatus'])->name('feature-req.update');
 
-
-    Route::get('/get-{status}-feature-request', [DashboardController::class, 'getFeatureRequestStatus'])->name('feature-request.status');
+    Route::post('/feature-request/{id}/comment/store', [FeatureRequestController::class, 'addComment'])->name('comment.store');
 
 
 });
