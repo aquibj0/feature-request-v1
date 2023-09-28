@@ -10,9 +10,40 @@ use App\Models\UserApp;
 use App\Models\FeatureRequest;
 use App\Models\Comments;
 use Str;
+use App\Http\Resources\FeatureRequestCollection;
+use App\Http\Resources\FeatureRequestResource;
 
 class FeatureRequestController extends Controller
 {
+
+
+    function index($id)  {
+        
+        $app = UserApp::where('app_id', $id)->first();
+        
+        if(isset($app)){
+
+            $featureRequest = FeatureRequest::where([['app_id', $app['id']], ['status', '!=', 'rejected']])->orderBy('created_at', 'desc')->get();
+
+            if($featureRequest->count() > 0):
+
+                return new FeatureRequestCollection($featureRequest);
+
+            endif;
+
+            return response()->json([], 204);        
+
+        }
+
+        $data = [
+            'message' => 'Success',
+            'data' => 'No Data Found',
+        ];
+        
+        return response()->json($data, 201);
+
+    }
+
     public function store(Request $request, $id){
 
         $app = UserApp::where('app_id', $id)->first();

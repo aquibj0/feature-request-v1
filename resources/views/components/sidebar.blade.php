@@ -14,7 +14,7 @@
             </a>
         </li>
         <li class="nav-item mb-2">
-            <a href="" class="nav-link text-gray-800 {{ (request()->is('dashboard/event')) ? 'active' : '' }}">
+            <a href="{{route('app.index')}}" class="nav-link text-gray-800 {{ (request()->is('dashboard/event')) ? 'active' : '' }}">
                 <img src="{{asset('images/dashboard/icons/Users.png')}}" width="24" alt="">
                 <span class="position-relative px-2 fw-500">My Apps</span>
             </a>

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-
+use Illuminate\View\View;
 use Auth;
 use App\Models\User;
 use App\Models\UserApp;
@@ -15,9 +15,19 @@ class UserAppController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
+    public function index(): View {
+        $user = Auth::user()->first();
+
+        $app = UserApp::where('user_id', $user['id'])->first();
+
+        if(isset($app)){
+            return view('dashboard.app.index',[
+                'user' => $user,
+                'app' => $app,
+            ]);
+        }
+        abort(404);
+        
     }
 
     /**
