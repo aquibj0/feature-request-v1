@@ -20,10 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/{id}/feature-request', [FeatureRequestController::class, 'index'])->name('feature-request.index');
-Route::middleware('auth')->group(function () {
+Route::middleware('api-auth')->group(function () {
 
     // Endpoint to store a new feature request
+    Route::get('/{id}/feature-request', [FeatureRequestController::class, 'index'])->name('feature-request.index');
     Route::post('/{id}/feature-request/store', [FeatureRequestController::class, 'store'])->name('feature-request.store');
     Route::put('/feature-request/{feature-request-id}', [FeatureRequestController::class, 'updateStatus']);
     
