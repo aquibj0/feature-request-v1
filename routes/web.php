@@ -32,6 +32,7 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
 
     Route::get('/user-app', [UserAppController::class, 'index'])->name('app.index');
     Route::get('/user-app/store-date', [UserAppController::class, 'storeData'])->name('app.store-data');
+    Route::get('/user-app/access-keys', [UserAppController::class, 'accessKeys'])->name('app.keys');
     Route::post('/user-app/store', [UserAppController::class, 'store'])->name('app.store');
     Route::delete('/user-app/{app-id}/destroy', [UserAppController::class, 'destroy'])->name('app.destroy');
 

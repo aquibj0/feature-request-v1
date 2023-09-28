@@ -3,7 +3,19 @@
 
     <x-slot name="header">
         <h4 class="text-gray-900 fw-600 px-4">
-            {{ __('Dashboard') }}
+            @isset($status)
+                @if ($status == 'pending')
+                    Pending
+                @elseif ($status == 'in-progress')
+                    In-Progress
+
+                @elseif ($status == 'completed')
+                    Completed
+
+                @elseif ($status == 'rejected')
+                    Rejected
+                @endif
+            @endisset {{ __(' Feature Requests') }}
         </h4>
     </x-slot>
 

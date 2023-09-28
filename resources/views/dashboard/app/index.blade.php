@@ -50,7 +50,7 @@
                         </div>
                     </div>
 
-                    <div class="card shadow-sm border-0 p-1">
+                    {{-- <div class="card shadow-sm border-0 p-1">
                         <div class="card-body py-4">
                             <div class="row align-items-center">
                                 <div class="col-md-9">
@@ -58,13 +58,12 @@
                                     <p class="fs-6 fw-400 mb-0">{{route('feature-request.store', $app->app_id)}}</p>
                                 </div>
                                 <div class="col-md-3 text-end">
-                                    {{-- <a href="" class="btn btn-primary  px-3"> View Details</a> --}}
                                     <a href="" class="btn btn-warning  px-3"> Copy </a>
                                 </div>
                                 
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="card shadow-sm border-0 p-1 my-4">
                         <div class="card-body py-4">

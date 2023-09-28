@@ -1,3 +1,7 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
 .session-status {
     border: 2px solid;
     position: absolute;
@@ -42,6 +46,12 @@
     }
 
 }
+
+label{font-weight: 500; font-size: 1rem;}
+
+// Font-Size
+.fs-7{font-size: 14px;}
+.fs-8{font-size: 12px;}
 
 .fw-400{font-weight: 400;}
 .fw-500{font-weight: 500;}

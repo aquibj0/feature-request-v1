@@ -37,6 +37,22 @@ class UserAppController extends Controller
         
     }
 
+
+    public function accessKeys(): View {
+        $user = Auth::user()->first();
+
+        $app = UserApp::where('user_id', $user['id'])->first();
+
+        if(isset($app)){
+            return view('dashboard.app.access-keys',[
+                'user' => $user,
+                'app' => $app,
+            ]);
+        }
+        abort(404);
+        
+    }
+
     /**
      * Show the form for creating a new resource.
      */

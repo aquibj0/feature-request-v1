@@ -7,28 +7,28 @@
     <hr class="section-divider">
 
     <ul class="nav nav-pills flex-column mb-auto mt-3">
-        <li class="nav-item mb-2">
+        <li class="nav-item mb-1">
             <a href="/dashboard" class="nav-link text-gray-800 {{ (request()->is('dashboard')) ? 'active' : '' }}" aria-current="page">
-                <img src="{{asset('images/dashboard/icons/Home.png')}}" width="24" alt="">
+                <i class="bi bi-speedometer2"></i>
                 <span class="position-relative px-2 fw-500">Dashboard</span>
             </a>
         </li>
-        <li class="nav-item mb-2">
+        <li class="nav-item mb-1">
             <a href="{{route('app.index')}}" class="nav-link text-gray-800 {{ (request()->is('dashboard/user-app')) ? 'active' : '' }}">
-                <img src="{{asset('images/dashboard/icons/Users.png')}}" width="24" alt="">
-                <span class="position-relative px-2 fw-500">My Apps</span>
+                <i class="bi bi-app"></i>
+                <span class="position-relative px-2 fw-500">My App</span>
             </a>
         </li>
-        <li  class="nav-item mb-2">
+        <li  class="nav-item mb-1">
             <a href="{{route('feature-req.index')}}" class="nav-link text-gray-800 {{ (request()->is('dashboard/feature-request')) ? 'active' : '' }}">
-                <img src="{{asset('images/dashboard/icons/Calendar.png')}}" width="24" alt="">
+                <i class="bi bi-journal-plus"></i>
                 <span class="position-relative px-2 fw-500">Feature Requests</span>
             </a>
         </li>
-        <li  class="nav-item mb-2">
-            <a href="#" class="nav-link text-gray-800 {{ (request()->is('dashboard/subscription')) ? 'active' : '' }}">
-                <img src="{{asset('images/dashboard/icons/Folder.png')}}" width="24" alt="">
-                <span class="position-relative px-2 fw-500">Setting</span>
+        <li  class="nav-item mb-1">
+            <a href="{{route('app.keys')}}" class="nav-link text-gray-800 {{ (request()->is('dashboard/access-keys')) ? 'active' : '' }}">
+                <i class="bi bi-gear"></i>
+                <span class="position-relative px-2 fw-500">Access Keys</span>
             </a>
         </li>
         {{-- <li  class="nav-item mb-2">

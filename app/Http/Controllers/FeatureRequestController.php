@@ -104,7 +104,8 @@ class FeatureRequestController extends Controller
         $feature_requests = FeatureRequest::where([['app_id', $app['id']], ['status', $status]])->orderBy('created_at', 'desc')->get();
 
         return view('dashboard.feature-request.index',[
-            'feature_requests' => $feature_requests
+            'feature_requests' => $feature_requests,
+            'status' => $status
         ]);
     }
 

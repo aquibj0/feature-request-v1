@@ -31,9 +31,9 @@
                             $date = Carbon\Carbon::parse($feature_request->created_at)->format('M d, Y')
                         @endphp
 
-                        <p class="fw-600 pt-2">{{$date}}</p>
+                        <p class="fw-500 pt-2">{{$date}}</p>
 
-                        <p class="fw-500" style="line-height: 1.5">{{$feature_request->feature_request_description}}</p>
+                        <p class="fw-400" style="line-height: 1.5">{{$feature_request->feature_request_description}}</p>
 
                         <hr>
 
