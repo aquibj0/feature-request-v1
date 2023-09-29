@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+require __DIR__.'/auth.php';
 Route::prefix('/dashboard')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [DashboardController::class, 'home'])->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -44,7 +44,8 @@ Route::prefix('/dashboard')->middleware(['auth', 'verified'])->group(function ()
 
 });
 
+
 Route::get('/{slug}', [UserAppController::class, 'profile'])->name('app.profile');
 
 
-require __DIR__.'/auth.php';
+
