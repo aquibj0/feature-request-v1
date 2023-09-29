@@ -17,20 +17,30 @@ class DashboardController extends Controller
         // Get the app
         $app = UserApp::where('user_id', $user['id'])->first();        
 
-        $pending_feature_requests = FeatureRequest::where([['app_id', $app['id']], ['status', 'pending']])->orderBy('created_at', 'desc')->get();
-        $approved_feature_requests = FeatureRequest::where([['app_id', $app['id']], ['status', 'approved']])->orderBy('created_at', 'desc')->get();
-        $in_progess_feature_requests = FeatureRequest::where([['app_id', $app['id']], ['status', 'in-progress']])->orderBy('created_at', 'desc')->get();
-        $rejected_feature_requests = FeatureRequest::where([['app_id', $app['id']], ['status', 'rejected']])->orderBy('created_at', 'desc')->get();
-        $completed_feature_requests = FeatureRequest::where([['app_id', $app['id']], ['status', 'completed']])->orderBy('created_at', 'desc')->get();
+        if(isset($app)){
+            $pending_feature_requests = FeatureRequest::where([['app_id', $app['id']], ['status', 'pending']])->orderBy('created_at', 'desc')->get();
+            $approved_feature_requests = FeatureRequest::where([['app_id', $app['id']], ['status', 'approved']])->orderBy('created_at', 'desc')->get();
+            $in_progess_feature_requests = FeatureRequest::where([['app_id', $app['id']], ['status', 'in-progress']])->orderBy('created_at', 'desc')->get();
+            $rejected_feature_requests = FeatureRequest::where([['app_id', $app['id']], ['status', 'rejected']])->orderBy('created_at', 'desc')->get();
+            $completed_feature_requests = FeatureRequest::where([['app_id', $app['id']], ['status', 'completed']])->orderBy('created_at', 'desc')->get();
 
+            return view('dashboard.home', [
+                'app' => $app,
+                'pending_feature_requests' => $pending_feature_requests,
+                'approved_feature_requests' => $approved_feature_requests,
+                'in_progess_feature_requests' => $in_progess_feature_requests,
+                'rejected_feature_requests' => $rejected_feature_requests,
+                'completed_feature_requests' => $completed_feature_requests,
+            ]);
+        }
+        
+        
         return view('dashboard.home', [
-            'app' => $app,
-            'pending_feature_requests' => $pending_feature_requests,
-            'approved_feature_requests' => $approved_feature_requests,
-            'in_progess_feature_requests' => $in_progess_feature_requests,
-            'rejected_feature_requests' => $rejected_feature_requests,
-            'completed_feature_requests' => $completed_feature_requests,
+            'user' => $user,
         ]);
+
+
+      
 
     }
 

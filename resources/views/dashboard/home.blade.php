@@ -20,7 +20,7 @@
         <div class="row px-0"> 
 
 
-            @if ($app)
+            @if (auth()->user()->app()->exists())
                 <div class="col-md-12 mb-4">
                     
                     <div class="card shadow-sm border-0 p-1">
@@ -173,18 +173,18 @@
                             @csrf
                             <input type="hidden" name="user_id" value="{{auth()->user()->id}}" id="">
                             <div class="mb-4">
-                                <label for="name" class="block mb-1">Name</label>
-                                <input name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="" type="text" placeholder="My First App" required>
+                                <label class="form-label">Name</label>
+                                <input name="name" class="form-control" id="" type="text" placeholder="My First App" required>
                             </div>
 
                             <div class="mb-4">
                                 <label for="description" class="block mb-1">Description</label>
-                                <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="description" id="" cols="30" rows="5" placeholder="App Description" required></textarea>
+                                <textarea class="form-control" name="description" id="" cols="30" rows="5" placeholder="App Description" required></textarea>
                                 
                             </div>
                             
                             <div class="flex items-center justify-between">
-                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                                <button class="btn-primary btn px-3" type="submit">
                                     Create
                                 </button>
                             </div>
@@ -200,56 +200,57 @@
 
 
    
+    @if (auth()->user()->app()->exists())
+        <x-slot name="script">
+            <script type="text/javascript">
 
-    <x-slot name="script">
-        <script type="text/javascript">
-
-            $(document).ready(function(){
+                $(document).ready(function(){
 
 
-                // action="" method="POST"
-                $('#featureReq').on('submit', function(event){
+                    // action="" method="POST"
+                    $('#featureReq').on('submit', function(event){
 
-                    event.preventDefault();
-                    
-
-                    $.ajax({
-
-                        beforeSend: function(xhr) {
-                            xhr.setRequestHeader('X-Api-Key', "{{$app['app_api_key']}}")
-                        },
+                        event.preventDefault();
                         
-                        type: 'POST',
-                        url:"http://127.0.0.1:8000/api/5784eba9-5fbf-44e8-aa15-5cdd1d46ab97/feature-request/store",
-                        data: new FormData(document.getElementById('featureReq')),
-                        enctype: 'multipart/form-data',
-                        dataType: "JSON",
-                        // headers: {
-                        //     "X-Api-Key": '{{$app['app_api_key']}}',
-                        // },
-                        contentType: false,
-                        cache: false,
-                        processData: false,
 
-                        success: function (data) {
-                            $(".loading").hide();  
-                            // location.reload();
-                            console.log(data);
+                        $.ajax({
 
-                        },
-                        error:function(xhr, errors, status){
-                            // $(".loading").hide();                   
-                            console.log(xhr);
-                        },
-                    })
+                            beforeSend: function(xhr) {
+                                xhr.setRequestHeader('X-Api-Key', "{{$app['app_api_key']}}")
+                            },
+                            
+                            type: 'POST',
+                            url:"http://127.0.0.1:8000/api/5784eba9-5fbf-44e8-aa15-5cdd1d46ab97/feature-request/store",
+                            data: new FormData(document.getElementById('featureReq')),
+                            enctype: 'multipart/form-data',
+                            dataType: "JSON",
+                            // headers: {
+                            //     "X-Api-Key": '{{$app['app_api_key']}}',
+                            // },
+                            contentType: false,
+                            cache: false,
+                            processData: false,
+
+                            success: function (data) {
+                                $(".loading").hide();  
+                                // location.reload();
+                                console.log(data);
+
+                            },
+                            error:function(xhr, errors, status){
+                                // $(".loading").hide();                   
+                                console.log(xhr);
+                            },
+                        })
+                    });
+
+
+
+                
+
                 });
-
-
-
-            
-
-            });
-        </script>
-    </x-slot>
+            </script>
+        </x-slot>
+    @endif
 
 </x-dashboard-layout>

@@ -42,4 +42,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function app(){
+        return $this->hasOne('App\Models\UserApp', 'user_id');
+    }
 }
