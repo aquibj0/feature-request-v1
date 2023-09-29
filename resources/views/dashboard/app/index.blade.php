@@ -129,7 +129,7 @@
 
 
                 </div>
-                <div class="setting">
+                {{-- <div class="setting">
                     <h4 class="fw-600">Setting</h4>
                     <div class="row">
                         <div class="col-md-4">
@@ -138,7 +138,7 @@
                                     <form method="POST" action="{{ route('save.custom.domain') }}" enctype="multipart/form-data">
                                         @csrf
 
-                                        <input type="text" name="app_id" value="{{$app->id}}">
+                                        <input type="hidden" name="app_id" value="{{$app->id}}">
                                         <div class="mb-3">
                                             <label for="domain" class="d-block mb-2">Custom Domain:</label>
                                             <input type="text" id="domain" name="domain" class="form-control" required>
@@ -154,7 +154,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
     
 

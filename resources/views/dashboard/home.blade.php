@@ -14,12 +14,8 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4 session-status" :status="session('status')" />
     
-    <div class="px-4">
-
-    
+    <div class="px-4">    
         <div class="row px-0"> 
-
-
             @if (auth()->user()->app()->exists())
                 <div class="col-md-12 mb-4">
                     
@@ -193,11 +189,8 @@
                 </div>
 
             @endif
-        
         </div>
     </div>
-
-
 
    
     @if (auth()->user()->app()->exists())
