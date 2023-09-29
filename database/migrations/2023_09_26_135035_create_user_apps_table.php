@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id'); 
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('app_name');
+            $table->string('slug');
             $table->text('app_description')->nullable();
             $table->string('app_api_key', 64)->unique();
             $table->string('app_domain')->unique()->nullable()->default(null);
