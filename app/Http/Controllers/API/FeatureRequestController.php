@@ -64,7 +64,7 @@ class FeatureRequestController extends Controller
                 'description' => 'nullable',
                 'status' => 'nullable',
             ]);
-
+            
             // Create a new feature request
             $featureRequest = FeatureRequest::create([
                 'app_id' => $app['id'],
@@ -82,7 +82,7 @@ class FeatureRequestController extends Controller
             ];
 
             return response()->json($data, 201);
-
+            
         }
 
         abort(404);

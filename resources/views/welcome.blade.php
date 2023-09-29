@@ -24,7 +24,7 @@
                     <div class="col-md-9">
                         <div class="py-4 text-center">
                             <h5>Introducing</h5>
-                            <h1 class="fw-700 pt-1"> FeaturesHub</h1>
+                            <h1 class="fw-700 pt-1"> Features<span >Hub</span></h1>
                         </div>
                         <div class="text-center">
                             <h4 class="fw-500">🌟  Your SaaS, Your Features, Your Community!🚀</h4>

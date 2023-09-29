@@ -18,8 +18,10 @@ class UserApp extends Model
         'app_id',
         'user_id',
         'app_name',
+        'slug',
         'app_description',
-        'app_api_key'
+        'app_api_key',
+        'app_domain'
     ];
 
 

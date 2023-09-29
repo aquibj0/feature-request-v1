@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('user_name');
             $table->string('user_email');
             $table->string('feature_request_title');
-            $table->string('feature_request_description');
+            $table->longText('feature_request_description');
 
             $table->enum('status', ['pending', 'approved', 'in-progress', 'completed', 'rejected'])->default('pending');
             

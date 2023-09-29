@@ -21,17 +21,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'home'])->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () {
-
+Route::prefix('/dashboard')->middleware(['auth', 'verified'])->group(function () {
+    Route::get('/', [DashboardController::class, 'home'])->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-
     Route::get('/user-app', [UserAppController::class, 'index'])->name('app.index');
-    Route::get('/user-app/store-date', [UserAppController::class, 'storeData'])->name('app.store-data');
+    // Route::get('/user-app/store-date', [UserAppController::class, 'storeData'])->name('app.store-data');
     Route::post('/user-app/save-custom-domain', [UserAppController::class, 'saveCustomDomain'])->name('save.custom.domain');
     Route::get('/user-app/access-keys', [UserAppController::class, 'accessKeys'])->name('app.keys');
     Route::get('/user-app/how-to-use', [UserAppController::class, 'howToUse'])->name('app.use');
@@ -46,5 +43,8 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
     Route::post('/feature-request/{id}/comment/store', [FeatureRequestController::class, 'addComment'])->name('comment.store');
 
 });
+
+Route::get('/{slug}', [UserAppController::class, 'profile'])->name('app.profile');
+
 
 require __DIR__.'/auth.php';

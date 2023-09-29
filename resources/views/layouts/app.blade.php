@@ -18,7 +18,8 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+
+            {{-- @include('layouts.navigation') --}}
 
             <!-- Page Heading -->
             @if (isset($header))
@@ -34,5 +35,13 @@
                 {{ $slot }}
             </main>
         </div>
+        
+        <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        
+        @if (isset($script))
+            {{ $script }}
+        @endif
+
     </body>
 </html>

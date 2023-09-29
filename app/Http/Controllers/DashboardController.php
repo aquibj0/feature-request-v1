@@ -26,6 +26,7 @@ class DashboardController extends Controller
 
             return view('dashboard.home', [
                 'app' => $app,
+                'user' => $user,
                 'pending_feature_requests' => $pending_feature_requests,
                 'approved_feature_requests' => $approved_feature_requests,
                 'in_progess_feature_requests' => $in_progess_feature_requests,

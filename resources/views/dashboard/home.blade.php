@@ -16,7 +16,7 @@
     
     <div class="px-4">    
         <div class="row px-0"> 
-            @if (auth()->user()->app()->exists())
+            @if ($user->app()->exists())
                 <div class="col-md-12 mb-4">
                     
                     <div class="card shadow-sm border-0 p-1">
@@ -27,8 +27,8 @@
                                     <p class="fs-6 fw-400 mb-0">{{$app->app_description}}</p>
                                 </div>
                                 <div class="col-md-3 text-end">
-                                    <a href="" class="btn btn-primary  px-3"> View Details</a>
-                                    <a href="" class="btn btn-warning  px-3"> Setting </a>
+                                    <a href="{{route('app.profile', $app['slug'])}}" class="btn btn-primary  px-3"> View Public Page</a>
+                                    {{-- <a href="" class="btn btn-warning  px-3"> Setting </a> --}}
                                 </div>
                             </div>
                         </div>
@@ -178,6 +178,9 @@
                                 <textarea class="form-control" name="description" id="" cols="30" rows="5" placeholder="App Description" required></textarea>
                                 
                             </div>
+                            
+                            
+
 
                              <div class="mb-4">
                                 <label for="app_domain" class="block mb-1">Domain</label>
@@ -199,7 +202,7 @@
     </div>
 
    
-    @if (auth()->user()->app()->exists())
+    @if ($user->app()->exists())
         <x-slot name="script">
             <script type="text/javascript">
 

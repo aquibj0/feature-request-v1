@@ -102,3 +102,19 @@ pre code {
 .text-black{
     color: #000 !important;
 }
+
+.pending{
+    border: 2.5px solid yellow !important;
+}
+
+.completed {
+    border: 2.5px solid lightgreen!important;
+}
+
+.in-progress {
+    border: 2.5px solid orange!important;
+}
+
+.rejected {
+    border: 2.5px solid red !important;
+}
