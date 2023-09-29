@@ -33,8 +33,10 @@ Welcome to FeaturesHub, the open-source solution for feature management in SaaS 
 4. **Accelerate Development**: Expedite development decisions and deliver features faster.
 5. **Data-Driven Decisions**: Make informed choices based on real-time data.
 
-## Getting Started
+## How to Use
 
+
+<!-- 
 To get started with FeaturesHub, follow these steps:
 
 1. **Installation**: Clone the repository and follow the installation instructions in the [Installation Guide](./docs/installation.md).
@@ -43,7 +45,7 @@ To get started with FeaturesHub, follow these steps:
 
 3. **Usage**: Learn how to use FeaturesHub by referring to the [User Guide](./docs/user-guide.md).
 
-4. **Contribute**: If you'd like to contribute to FeaturesHub, please read our [Contribution Guidelines](./CONTRIBUTING.md).
+4. **Contribute**: If you'd like to contribute to FeaturesHub, please read our [Contribution Guidelines](./CONTRIBUTING.md). -->
 
 ## Contributing
 
