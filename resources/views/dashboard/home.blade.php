@@ -178,6 +178,12 @@
                                 <textarea class="form-control" name="description" id="" cols="30" rows="5" placeholder="App Description" required></textarea>
                                 
                             </div>
+
+                             <div class="mb-4">
+                                <label for="app_domain" class="block mb-1">Domain</label>
+                                <input name="app_domain" class="form-control" id="" type="text" placeholder="example.com" required>
+                                
+                            </div>
                             
                             <div class="flex items-center justify-between">
                                 <button class="btn-primary btn px-3" type="submit">
