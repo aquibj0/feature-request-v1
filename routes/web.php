@@ -39,13 +39,14 @@ Route::prefix('/dashboard')->middleware(['auth', 'verified'])->group(function ()
     Route::get('/feature-request/status/{status}', [FeatureRequestController::class, 'getFeatureRequestStatus'])->name('feature-request.status');
     Route::get('/feature-request/{id}', [FeatureRequestController::class, 'show'])->name('feature-req.show');
     Route::put('/feature-request/{id}/update', [FeatureRequestController::class, 'updateStatus'])->name('feature-req.update');
-
+    
     Route::post('/feature-request/{id}/comment/store', [FeatureRequestController::class, 'addComment'])->name('comment.store');
-
+    
 });
 
 
 Route::get('/{slug}', [UserAppController::class, 'profile'])->name('app.profile');
+Route::post('{slug}/feature-request/store', [FeatureRequestController::class, 'store'])->name('feature-req.store');
 
 
 

@@ -1,9 +1,12 @@
 <x-app-layout>
 
+    <x-auth-session-status class="mb-4 session-status" :status="session('status')" />
+
+
     <header class="my-4">
         <div class="container">
             <div class="row justify-content-center">
-
+                
             <div class="col-md-10 my-4">                    
                     
                     <div class="card shadow-sm border-0 p-1">
@@ -99,9 +102,9 @@
                 </div>
                 <div class="modal-body ">
                     <div class="p-1">
-                        {{-- <form action="{{route('feature-request.store', $app->app_id)}}" method="POST" class="p-1" enctype="multipart/form-data"> --}}
+                        <form action="{{route('feature-req.store', $app->slug)}}" method="POST" class="p-1" enctype="multipart/form-data">
                             {{-- @method('POST') --}}
-                        <form id="featureReq" enctype="multipart/form-data">
+                        {{-- <form id="featureReq" enctype="multipart/form-data"> --}}
                             @csrf
 
 
@@ -139,7 +142,7 @@
     </div>
 
 
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
 
         $(document).ready(function(){
 
@@ -186,6 +189,6 @@
         
 
         });
-    </script>
+    </script> --}}
 
 </x-app-layout>

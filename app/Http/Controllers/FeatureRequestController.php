@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\UserApp;
 use App\Models\FeatureRequest;
 use App\Models\Comments;
+use Str;
 
 class FeatureRequestController extends Controller
 {
@@ -107,6 +108,43 @@ class FeatureRequestController extends Controller
             'feature_requests' => $feature_requests,
             'status' => $status
         ]);
+    }
+
+    public function store(Request $request, $slug){
+
+        $app = UserApp::where('slug', $slug)->first();
+
+        if(isset($app)){
+            
+            $validatedData = $request->validate([
+                'name' => 'required',
+                'email' => 'required',
+                'title' => 'required',
+                'description' => 'nullable',
+                'status' => 'nullable',
+            ]);
+            
+            // Create a new feature request
+            $featureRequest = FeatureRequest::create([
+                'app_id' => $app['id'],
+                'feature_request_id' => Str::uuid(),
+                'user_name' => $request['name'],
+                'user_email' => $request['email'],
+                'feature_request_title' => $request['title'],
+                'feature_request_description' => $request['description'],
+                'status' => 'pending'
+            ]);
+
+            $data = [
+                'message' => 'success',
+                'data' => $featureRequest,
+            ];
+
+            return redirect()->back()->with('status', 'Data Saved, We\'ll get in touch with you shortly');
+
+
+        }
+        abort(403);
     }
 
 }
