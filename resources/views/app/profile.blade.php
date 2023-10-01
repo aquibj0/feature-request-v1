@@ -59,7 +59,7 @@
                                             <h3 class="fw-600 pb-1">{{$data->feature_request_title}} </h3>
 
                                             
-                                            <p class="text-secondary mb-1 pb-1">{{date('s M, Y', strtotime($data->created_at))}}</p>                                           
+                                            <p class="text-secondary mb-1 pb-1">{{date('d M, Y', strtotime($data->created_at))}}</p>                                           
 
                                             <p class="text-secondary fw-400">{{$data->feature_request_description}}</p>
                                             
